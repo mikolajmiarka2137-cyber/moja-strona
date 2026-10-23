@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ranking aktorek i aktorów</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px 20px;
+      background: #111827;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      text-align: center;
+      padding: 35px 10px;
+    }
+
+    h1 {
+      color: #38bdf8;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 22px;
+      background: #38bdf8;
+      color: #111827;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #7dd3fc;
+    }
+
+    #opcje {
+      display: none;
+      max-width: 1100px;
+      margin: 30px auto;
+      gap: 24px;
+    }
+
+    #opcje.widoczne {
+      display: grid;
+    }
+
+    .karta {
+      border: 3px solid white;
+      border-radius: 70px;
+      padding: 30px 55px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .karta h2 {
+      margin: 0;
+      font-size: 25px;
+    }
+
+    .karta p {
+      font-size: 17px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .szczegoly {
+      display: none;
+      padding-top: 12px;
+      color: #bae6fd;
+    }
+
+    .szczegoly.widoczne {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .karta {
+        padding: 25px;
+        border-radius: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Ranking aktorek i aktorów 🚀</h1>
+    <p>Poznaj najlepsze aktorki i aktorów według niezależnych ankiet.</p>
+    <button id="pokazOpcje">Kliknij mnie</button>
+  </header>
+
+  <main id="opcje">
+
+    <section class="karta">
+      <h2>1. Ranking aktorek PH</h2>
+      <p>Poznaj aktorki, które zdobyły uznanie widzów i krytyków.</p>
+      <button onclick="rozwin(1)">Rozwiń temat</button>
+      <p class="szczegoly" id="detale1">
+        
+      </p>
+    </section>
+
+    <section class="karta">
+      <h2>2. dlaczego damianek jest super</h2>
+      <p>Sprawdź, którzy aktorzy cieszą się największą popularnością.</p>
+      <button onclick="rozwin(2)">Rozwiń temat</button>
+      <p class="szczegoly" id="detale2">
+        Tutaj znajdzie się ranking aktorów i opis ich najlepszych filmów.
+      </p>
+    </section>
+
+    <section class="karta">
+      <h2>3. Najlepsze filmy</h2>
+      <p>Odkryj filmy, które warto obejrzeć.</p>
+      <button onclick="rozwin(3)">Rozwiń temat</button>
+      <p class="szczegoly" id="detale3">
+        Tutaj znajdzie się lista polecanych filmów wraz z opisami.
+      </p>
+    </section>
+
+    <section class="karta">
+      <h2>4. Najlepsze seriale</h2>
+      <p>Poznaj seriale, które przyciągają miliony widzów.</p>
+      <button onclick="rozwin(4)">Rozwiń temat</button>
+      <p class="szczegoly" id="detale4">
+        Tutaj znajdzie się ranking seriali i krótkie informacje o nich.
+      </p>
+    </section>
+
+    <section class="karta">
+      <h2>5. Głosowanie widzów</h2>
+      <p>Sprawdź, kogo widzowie wybierają na swoich faworytów.</p>
+      <button onclick="rozwin(5)">Rozwiń temat</button>
+      <p class="szczegoly" id="detale5">
+        Tutaj można później dodać głosowanie i wyniki ankiety.
+      </p>
+    </section>
+
+  </main>
+
+  <script>
+    const przycisk = document.getElementById("pokazOpcje");
+    const opcje = document.getElementById("opcje");
+
+    przycisk.addEventListener("click", function () {
+      opcje.classList.toggle("widoczne");
+
+      if (opcje.classList.contains("widoczne")) {
+        przycisk.textContent = "Ukryj opcje";
+      } else {
+        przycisk.textContent = "Kliknij mnie";
+      }
+    });
+
+    function rozwin(numer) {
+      const element = document.getElementById("detale" + numer);
+      element.classList.toggle("widoczne");
+
+      const karta = element.closest(".karta");
+      const przycisk = karta.querySelector("button");
+
+      przycisk.textContent = element.classList.contains("widoczne")
+        ? "Zwiń temat"
+        : "Rozwiń temat";
+    }
+  </script>
+
+</body>
+</html>
